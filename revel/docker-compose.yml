@@ -1,0 +1,11 @@
+#compose file just for testing lynx
+version: '3'
+services:
+  revel:
+    build:
+      context: .
+      dockerfile: docker/revel/Dockerfile
+    volumes:
+      - .:/go/src/code
+    ports:
+      - 9000:9000

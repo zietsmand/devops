@@ -1,0 +1,15 @@
+version: '2'
+services:
+  alpine: # ODBC driver not supported on alpine currently https://github.com/Microsoft/msphpsql/issues/300
+    build:
+      context: alpine-php-sqlsrv
+    ports:
+      - "80:80"
+    working_dir: /var/www/app
+
+  ubuntu:
+    build:
+      context: ubuntu-php-sqlsrv
+    ports:
+      - "80:80"
+    working_dir: /var/www/app

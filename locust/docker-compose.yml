@@ -1,0 +1,18 @@
+# see https://github.com/karol-brejna-i/docker-locust
+version: '3'
+services:
+  locust:
+    build:
+      context: .
+      dockerfile: alpine-python/Dockerfile
+    ports:
+     - "8089:8089"
+    environment:
+      ATTACKED_HOST: docker_host
+      LOCUST_MODE: standalone
+      NO_PROXY: standalone
+      TASK_DELAY: 1000
+      QUIET_MODE: "${QUIET_MODE:-false}"
+      LOCUST_OPTS: "--web-port 8089"
+    volumes:
+      - ./scripts:/locust

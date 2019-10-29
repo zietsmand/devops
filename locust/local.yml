@@ -1,0 +1,18 @@
+# for use with local services
+version: '2'
+services:
+  locust:
+    build:
+      context: .
+      dockerfile: alpine-python/Dockerfile
+    ports:
+      - "8089:8089"
+    environment:
+      ATTACKED_HOST: http://WEBSERVICE_NAME_CHANGE_ME
+      LOCUST_MODE: standalone
+      NO_PROXY: standalone
+      TASK_DELAY: 1000
+      QUIET_MODE: "false"
+      LOCUST_OPTS: "--web-port 8089"
+    links:
+      - WEBSERVICE_NAME_CHANGE_ME:WEBSERVICE_NAME_CHANGE_ME
